@@ -43,6 +43,65 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
+    public List getProductSizeById(int id) {
+        
+        List list = new ArrayList();
+        String sql = "select size_value from product_sizes ps \n"
+                + "join sizes s on ps.size_id = s.size_id\n"
+                + "where product_id =(?)";
+        
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()){
+                list.add(rs.getInt(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+        return list;
+    }
+
+    public List<Product> getLatestProduct() {
+        String sql = "SELECT TOP (12) [id]\n"
+                + "      ,[name]\n"
+                + "      ,[description]\n"
+                + "      ,[image]\n"
+                + "      ,[price]\n"
+                + "      ,[quantity]\n"
+                + "      ,[categoryId]\n"
+                + "  FROM [PP].[dbo].[product]\n"
+                + "  Order by id desc";
+        List<Product> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getInt(1));
+                p.setName(rs.getString(2));
+                p.setDescription(rs.getString(3));
+                p.setImage(rs.getString(4));
+                p.setPrice(rs.getDouble(5));
+                p.setQuantity(rs.getInt(6));
+
+                DAO dao = new DAO();
+                Category c = dao.getCategoryById(rs.getInt(7));
+                p.setC(c);
+                list.add(p);
+            }
+
+            return list;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     public Product getProductById(int id) {
         String sql = "select * from product where id=(?)";
 
@@ -139,7 +198,7 @@ public class ProductDAO extends DBContext {
     public void deleteProductById(int id) {
         String sql = "DELETE FROM [dbo].[product]\n"
                 + "      WHERE id=?";
-        
+
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
@@ -147,13 +206,15 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        Product p = dao.getProductById(92);
-        System.out.println(p);
+        List p = dao.getProductSizeById(92);
+        for (Object object : p) {
+            System.out.println(object);
+        }
     }
 
 }
