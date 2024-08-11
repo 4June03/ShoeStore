@@ -3,14 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/web/homepage/index.html</file>
             <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/web/updateProduct.jsp</file>
+            <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/src/java/controller/ProductDetailServlet.java</file>
             <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/src/java/controller/UpdateProductServlet.java</file>
+            <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/web/homepage/allproductpage.jsp</file>
+            <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/src/java/dal/ProductDAO.java</file>
             <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/web/homepage/homepagefooter.jsp</file>
             <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/web/homepage/images/img_bg_2.jpg</file>
             <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/src/java/controller/HomePageServlet.java</file>
             <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/web/homepage/homenavbar.jsp</file>
             <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/web/homepage/homepagehead.jsp</file>
+            <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/src/java/controller/ShoppingServlet.java</file>
             <file>file:/C:/Users/HUU%20NGHIA/OneDrive/Desktop/This%20Semester/JavaNghia/built/ShoeStore/web/homepage/homepage.jsp</file>
         </group>
     </open-files>

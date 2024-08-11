@@ -110,7 +110,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p><a href="#" class="btn btn-primary btn-lg">Tất cả sản phẩm</a></p>
+                    <p><a href="${pageContext.request.contextPath}/shopping" class="btn btn-primary btn-lg">Tất cả sản phẩm</a></p>
                 </div>
             </div>
 

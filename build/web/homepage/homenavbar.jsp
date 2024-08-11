@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-sm-12 text-left menu-1">
                                 <ul>
-                                    <li class="active"><a href="homepage.jsp">Home</a></li>
+                                    <li class="active"><a href="${pageContext.request.contextPath}/home">Home</a></li>
                                     <li class="has-dropdown">
                                         <a href="men.html">Men</a>
                                         <ul class="dropdown">
@@ -37,7 +37,7 @@
                                             <li><a href="add-to-wishlist.html">Wishlist</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="women.html">Women</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/shopping">Shopping</a></li>
                                     <li><a href="about.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                     <li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>

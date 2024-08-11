@@ -43,25 +43,46 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
-    public List getProductSizeById(int id) {
-        
+    public List getAllProductSize() {
         List list = new ArrayList();
-        String sql = "select size_value from product_sizes ps \n"
-                + "join sizes s on ps.size_id = s.size_id\n"
-                + "where product_id =(?)";
+
+        String sql = "SELECT [size_value]\n"
+                + "  FROM [PP].[dbo].[sizes]";
         
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, id);
+            PreparedStatement st = connection.prepareStatement(sql);           
             ResultSet rs = st.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 list.add(rs.getInt(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    
+
+        return list;
+        
+    }
+
+    public List getProductSizeById(int id) {
+
+        List list = new ArrayList();
+        String sql = "select size_value from product_sizes ps \n"
+                + "join sizes s on ps.size_id = s.size_id\n"
+                + "where product_id =(?)";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return list;
     }
 
