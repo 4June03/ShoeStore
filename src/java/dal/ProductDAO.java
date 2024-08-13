@@ -4,6 +4,7 @@
  */
 package dal;
 
+import java.security.interfaces.RSAKey;
 import java.sql.*;
 import model.*;
 import java.util.*;
@@ -43,14 +44,33 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
+    public int getTotalProduct() {
+        String sql = "select count(*) as total\n"
+                + "from product";
+        int total = 0;
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return total;
+    }
+
     public List getAllProductSize() {
         List list = new ArrayList();
 
         String sql = "SELECT [size_value]\n"
                 + "  FROM [PP].[dbo].[sizes]";
-        
+
         try {
-            PreparedStatement st = connection.prepareStatement(sql);           
+            PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
@@ -61,7 +81,7 @@ public class ProductDAO extends DBContext {
         }
 
         return list;
-        
+
     }
 
     public List getProductSizeById(int id) {
@@ -120,6 +140,42 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
             System.out.println(e);
         }
+        return null;
+    }
+
+    public List<Product> getPagingProduct(int page) {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT *\n"
+                + "FROM product\n"
+                + "ORDER BY id\n"
+                + "OFFSET ? ROWS \n"
+                + "FETCH NEXT 12 ROWS ONLY;";
+        try {
+           PreparedStatement st = connection.prepareStatement(sql);
+           st.setInt(1, (page-1)*12);
+           ResultSet rs = st.executeQuery();
+           while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getInt(1));
+                p.setName(rs.getString(2));
+                p.setDescription(rs.getString(3));
+                p.setImage(rs.getString(4));
+                p.setPrice(rs.getDouble(5));
+                p.setQuantity(rs.getInt(6));
+
+                DAO dao = new DAO();
+                Category c = dao.getCategoryById(rs.getInt(7));
+                p.setC(c);
+                list.add(p);
+            }
+
+            return list;
+  
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
@@ -232,10 +288,13 @@ public class ProductDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        List p = dao.getProductSizeById(92);
-        for (Object object : p) {
-            System.out.println(object);
+        List<Product> p = dao.getPagingProduct(2);
+        
+        for (Product x : p) {
+            System.out.println(x);
         }
+        
+        
     }
 
 }
