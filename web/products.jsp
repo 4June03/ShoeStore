@@ -103,25 +103,27 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="row">
-                            <nav aria-label="..." class="d-flex float-right">
-                                <ul class="pagination">
-                                    <li class="page-item disabled">
-                                        <a class="page-link">Previous</a>
-                                    </li>
-                                    
-                                <c:forEach begin="1" end="${requestScope.pageN}" var="o">
-                                    <li class="page-item ${o==requestScope.selectedp?'active':''}" aria-current="page">
-                                        <a class="page-link" href="product?page=${o}">${o}</a>
-                                    </li>
-                                </c:forEach>
-                                
-                                    
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
+                        <div class="row mt-4">
+
+                            <div class="d-flex justify-content-end mr-2">
+                                <nav aria-label="..." >
+                                    <ul class="pagination">
+                                        <li class="page-item disabled">
+                                            <a class="page-link">Previous</a>
+                                        </li>
+
+                                        <c:forEach begin="1" end="${requestScope.pageN}" var="o">
+                                            <li class="page-item ${o==requestScope.selectedp?'active':''}" aria-current="page">
+                                                <a class="page-link" href="product?page=${o}">${o}</a>
+                                            </li>
+                                        </c:forEach>
+
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
 
                     </div>
@@ -145,8 +147,8 @@
                             </ul>
                         </nav>
                         <div class="copyright">
-                            2024, made with <i class="fa fa-heart heart text-danger"></i> by
-                            <a href="http://www.themekita.com">ThemeKita</a>
+                            2024, made with <i class="fa fa-heart heart text-danger"></i> by Huu Nghia
+
                         </div>
                         <div>
                             Distributed by
