@@ -59,10 +59,32 @@ public class ProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         //processRequest(request, response);
-        ProductDAO dao = new ProductDAO();
-        List<Product> list = dao.getAllProduct();
-        request.setAttribute("products", list);
+    
+        String pageR = request.getParameter("page");
+        if(pageR==null){
+            pageR = "1";
+        }
         
+        int page =0;
+        try {
+            page = Integer.parseInt(pageR);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ProductDAO dao = new ProductDAO();
+        List<Product> list = dao.getPagingProduct(page);
+        int totalProduct = dao.getTotalProduct();
+        
+        int pageN = totalProduct/12;
+        
+        if(totalProduct%12!=0){
+            pageN++;
+        }
+        
+        request.setAttribute("pageN", pageN);
+        request.setAttribute("products", list);
+        request.setAttribute("selectedp", page);
         request.getRequestDispatcher("products.jsp").forward(request, response);    
     } 
 

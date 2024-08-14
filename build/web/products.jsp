@@ -89,7 +89,7 @@
                                                 <td>${p.price}$</td>
                                                 <td>${p.quantity}</td>
                                                 <td>${p.c.cname}</td>
-                                              
+
                                                 <td>
                                                     <a href="updateProduct?id=${id}" class="btn btn-warning btn-round"><i class="fas fa-edit"></i></a>
                                                     <a href="deleteProduct?id=${id}" class="btn btn-danger btn-round"><i class="fas fa-trash"></i></a>
@@ -103,7 +103,26 @@
                                 </table>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <nav aria-label="..." class="d-flex float-right">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link">Previous</a>
+                                    </li>
+                                    
+                                <c:forEach begin="1" end="${requestScope.pageN}" var="o">
+                                    <li class="page-item ${o==requestScope.selectedp?'active':''}" aria-current="page">
+                                        <a class="page-link" href="product?page=${o}">${o}</a>
+                                    </li>
+                                </c:forEach>
+                                
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
 
                     </div>
                 </div>
